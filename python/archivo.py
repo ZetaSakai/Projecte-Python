@@ -1,9 +1,7 @@
-# ==========================================
 # AulaManager - Operació Aula Zero
-# ==========================================
 
-equips = []
-contador_id = 1
+equips = [] # Llista on guardarem tots els equips
+contador_id = 1 # Variable per generar ID automàtic
 
 
 def donar_alta():
