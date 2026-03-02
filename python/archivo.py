@@ -1,94 +1,63 @@
 # AulaManager - Operació Aula Zero
 
-equips = [] # Llista on guardarem tots els equips
-contador_id = 1 # Variable per generar ID automàtic
+equips = [] # Lista de equipos
 
+contador_id = 1 # Variable ID automático
 
-def donar_alta():
-    global contador_id
-
-    print("\n--- DONAR D'ALTA EQUIP ---")
-
-    tipus = input("Tipus (PC, Portàtil, Impressora, Switch, AP, Servidor): ")
-    nom = input("Nom d'equip: ")
-    aula = input("Aula: ")
-    serie = input("Número de sèrie: ")
-    so = input("Sistema operatiu: ")
-    ram = input("RAM (ex: 16GB): ")
-    disc = input("Disc (ex: 512GB SSD): ")
-    estat = input("Estat (operatiu / avariat / reparació / baixa): ")
-    ip = input("IP (opcional): ")
-    mac = input("MAC (opcional): ")
-    observacions = input("Observacions: ")
-
-    equip = {
-        "id": contador_id,
-        "tipus": tipus,
-        "nom": nom,
-        "aula": aula,
-        "serie": serie,
-        "so": so,
-        "ram": ram,
-        "disc": disc,
-        "estat": estat,
-        "ip": ip,
-        "mac": mac,
-        "observacions": observacions
-    }
-
-    equips.append(equip)
-    print(f"\n✅ Equip registrat amb ID {contador_id}")
-
-    contador_id += 1
-
-
-def mostrar_equips():
-    print("\n--- LLISTAT D'EQUIPS ---")
-
-    if len(equips) == 0:
-        print("No hi ha equips registrats.")
-        return
-
-    for equip in equips:
-        print("---------------------------------")
-        for clau, valor in equip.items():
-            print(clau, ":", valor)
-
-
-def buscar_per_serie():
-    serie_buscar = input("\nIntrodueix número de sèrie: ")
-
-    for equip in equips:
-        if equip["serie"] == serie_buscar:
-            print("\nEquip trobat:")
-            for clau, valor in equip.items():
-                print(clau, ":", valor)
-            return
-
-    print("No s'ha trobat cap equip amb aquest número de sèrie.")
-
-
-# =========================
-# MENÚ PRINCIPAL
-# =========================
-
+# Bucle principal
 while True:
     print("\n===== AulaManager =====")
-    print("1. Donar d'alta equip")
-    print("2. Mostrar equips")
-    print("3. Buscar per número de sèrie")
-    print("4. Sortir")
+    print("1. Dar de alta un equipo")       
+    print("2. Ver todos los equipos")      
+    print("3. Consultar estado de un equipo") 
+    print("4. Salir")
 
-    opcio = input("Escull una opció: ")
+    opcion = input("Elige una opción: ")
 
-    if opcio == "1":
-        donar_alta()
-    elif opcio == "2":
-        mostrar_equips()
-    elif opcio == "3":
-        buscar_per_serie()
-    elif opcio == "4":
-        print("Sortint del programa...")
+    if opcion == "1":
+        equipo = {
+            "id": contador_id,              
+            "tipo": input("Tipo (PC, Portátil, Impresora, Switch, AP, Servidor): "),
+            "nombre": input("Nombre del equipo: "),
+            "aula": input("Aula: "),
+            "serie": input("Número de serie: "),
+            "so": input("Sistema operativo: "),
+            "ram": input("RAM (ej: 16GB): "),
+            "disc": input("Disco (ej: 512GB SSD): "),
+            "estado": input("Estado (operativo/avariado/reparación/baja): "),
+            "ip": input("IP (opcional): "),
+            "mac": input("MAC (opcional): "),
+            "observaciones": input("Observaciones: ")
+        }
+
+        # Guardamos el equipo en la lista
+        equips.append(equipo)
+        print(f"Equipo registrado con ID: {contador_id}")
+
+        # Aumentamos el contador
+        contador_id += 1
+
+    elif opcion == "2":
+        if len(equips) == 0:
+            print("No hay equipos registrados.")
+        else:
+            for e in equips:
+                print("----------------------------")
+                for clave, valor in e.items(): #e representa un equipo de cada bucle
+                    print(f"{clave}: {valor}")
+
+    elif opcion == "3":
+        serie_buscar = input("Introduce el número de serie del equipo: ")
+        for e in equips: #e representa un equipo de cada bucle
+            if e["serie"] == serie_buscar:
+                print(f"El estado del equipo '{"nombre"}' es: {e['estado']}")
+                break
+        else:
+            print("No se ha encontrado ningún equipo con ese número de serie.")
+
+    elif opcion == "4":
+        print("Saliendo del programa...")
         break
+
     else:
-        print("Opció no vàlida.")
+        print("Opción no válida. Intenta de nuevo.")
