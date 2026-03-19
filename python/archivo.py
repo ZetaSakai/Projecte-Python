@@ -68,11 +68,11 @@ while True:
                 print(f"El estado actual de {equipo['nombre']} es: {equipo['estado']}")
                 nuevo_estado = input("Introduce el nuevo estado: ")
                 equipo["estado"] = nuevo_estado
-                print("✅ Estado actualizado correctamente.")
+                print("actualizado correctamente.")
                 encontrado = True
                 break
         if not encontrado:
-            print("❌ No se ha encontrado ningún equipo con ese número de serie.")
+            print("No se ha encontrado ningún equipo con ese número de serie.")
 
     elif opcion == "4":
         print("Función de modificación aún no implementada.")
