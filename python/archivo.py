@@ -33,6 +33,15 @@ while True:
             print(f"Estado no válido. Elige uno de estos: {estados_validos}")
             estado = input("Estado: ")
 
+        registrar = input("Registrar una incidència: ")
+        asignar_tecnic = input("Assigna un tecnico responsable: ")
+
+        incidencias_validad = ["resuelta", "pendiente"]
+        incidencias = input("Marca la incidencia (pendiente/resuelta) : ")
+        while incidencias not in incidencias_validad:
+            print(f"Incidencia no válido. Elige uno de estos: {incidencias_validad}")
+            incidencias = input("Estado: ")
+
         ip = input("IP (opcional): ")
         mac = input("MAC (opcional): ")
         observaciones = input("Observaciones: ")
@@ -49,7 +58,10 @@ while True:
             "estado": estado,
             "ip": ip,
             "mac": mac,
-            "observaciones": observaciones
+            "observaciones": observaciones,
+            "registrar": registrar,
+            "asignartecnic": asignar_tecnic,
+            "incidencias": incidencias
         }
 
         equips.append(equipo)
@@ -61,10 +73,20 @@ while True:
             print("No hay equipos registrados.")
         else:
             for equipo in equips:
-                print("\n------------------------")
-                print(f"ID: {equipo['id']} | Nombre: {equipo['nombre']} | Estado: {equipo['estado']}")
-                print(f"Tipo: {equipo['tipo']} | Aula: {equipo['aula']} | Serie: {equipo['serie']}")
-                print(f"Specs: {equipo['ram']}GB RAM - {equipo['disc']} - {equipo['so']}")
+                print("\n---INFORMACIÓ DE L'EQUIP---")
+
+                print(f"ID: {equipo['id']}")
+                print (f"Nombre: {equipo['nombre']}")
+                print (f"Aula: {equipo['aula']}")
+                print (f"Estado: {equipo['estado']}")
+                print("\n")
+                print (f"Sistema operatiu:{equipo['so']}")
+                print (f"RAM:{equipo['ram']}GB")
+                print (f"Disc:{equipo['disc']}")
+                print("\n")
+                print(f"Incidencia:{equipo['registrar']}")
+                print(f"Tecnico:{equipo['asignartecnic']}")
+                print(f"Estado incidencia:{equipo['incidencias']}")
 
     elif opcion == "3":
         serie_buscar = input("Introduce el número de serie del equipo: ")
