@@ -175,7 +175,7 @@ while True:
 
     # --- OPCIÓN 0: SALIR ---
     elif opcion == "0":
-        print("Cerrando programa... ¡Adiós!")
+        print("Cerrando programa... ¡Adiós!Guarra")
         break
 
     else:
