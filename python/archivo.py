@@ -140,6 +140,7 @@ while True:
         if not encontrado:
             print("ID no encontrado.")
 
+# --- OPCIÓN 5: MODIFICAR DATOS  ---
     elif opcion == "5":
             id_buscar = int(input("Introduce el ID del equipo que quieres modificar: "))
             encontrado = False
