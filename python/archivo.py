@@ -140,6 +140,23 @@ while True:
         if not encontrado:
             print("ID no encontrado.")
 
+    elif opcion == "5":
+            id_buscar = int(input("Introduce el ID del equipo que quieres modificar: "))
+            encontrado = False
+            for e in equips:
+                if e["id"] == id_buscar:
+                    print(f"Modificando equipo: {e['nombre']}")
+                    # Pedimos los datos nuevos
+                    e["nombre"] = input("Nuevo nombre: ")
+                    e["aula"] = input("Nueva aula: ")
+                    e["so"] = input("Nuevo sistema operativo: ")
+                    
+                    print("¡Datos actualizados correctamente!")
+                    encontrado = True
+                    break
+            if not encontrado:
+                print("Error: Ese ID no existe.")
+
     # --- OPCIÓN 6: REGISTRAR AVERÍA RÁPIDA ---
     elif opcion == "6":
         id_buscar = int(input("ID del equipo con problemas: "))
