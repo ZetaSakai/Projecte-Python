@@ -5,25 +5,23 @@ from datetime import datetime
 equipos = []
 contador_id = 1
 
-# --- 1: CARREGAR DADES (PERSISTÈNCIA) ---
-# Al principi, mirem si el fitxer ja existeix per no perdre el que teníem
+# --- 1: CARREGAR DADES ---
+# mirem si el fitxer ja existeix
 if os.path.exists("equips.csv"):
     with open("equips.csv", "r", encoding="utf-8") as f:
         lector = csv.DictReader(f)
         for fila in lector:
-            # Convertim l'ID a número perquè es llegeix com a text
             fila["id"] = int(fila["id"])
             equipos.append(fila)
     
     if equipos:
-        # Busquem l'ID més alt per saber per quin número seguir
         for e in equipos:
             if e["id"] >= contador_id:
                 contador_id = e["id"] + 1
     print(f"Dades carregades correctament ({len(equipos)} equips).")
 
 while True:
-    # Comptadors per al resum de l'inici
+    # Comptadors 
     operatius = 0
     avariats = 0
     reparacio = 0
@@ -144,14 +142,13 @@ while True:
                     print("Incidència registrada.")
                 
                 elif accio == "2":
-                    # FASE 2: HISTORIAL - Guardem abans de borrar la incidencia
+                    # HISTORIAL - Guardem abans de borrar la incidencia
                     ara = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     linea_hist = f"[{ara}] ID:{e['id']} Equip:{e['nom']} | Incidència:{e['incidencia']} Tècnic:{e['tecnic']} | Resolta\n"
                     
                     with open("historial.txt", "a") as h:
                         h.write(linea_hist)
                     
-                    # Netegem els camps de incidència de l'equip
                     e["incidencia"] = ""
                     e["tecnic"] = ""
                     e["estat_inc"] = ""
@@ -194,7 +191,6 @@ while True:
         print("Informe generat correctament: informe.txt")
 
     elif opcio == "0": # OPCIÓ 0: SORTIR I GUARDAR
-        # Guardem tot al CSV abans de tancar
         camps = ["id", "nom", "aula", "serie", "tipus", "so", "ram", "disc", "estado", "ip", "mac", "obs", "incidencia", "tecnic", "estat_inc"]
         with open("equips.csv", "w", newline="", encoding="utf-8") as f:
             escritor = csv.DictWriter(f, fieldnames=camps)
