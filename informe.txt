@@ -1,0 +1,18 @@
+INFORME D'ESTAT AULA ZERO
+Data: 2026-04-22 21:39:33
+
+RESUM GLOBAL
+Total equips: 5
+Operatius: 3
+Avariats: 2
+
+DETALL D'EQUIPS
+ID: 1 - Nom: PC 1 - Estat: avariat
+ID: 2 - Nom: PC 2 - Estat: operatiu
+ID: 3 - Nom: Ordinador - Estat: operatiu
+ID: 4 - Nom: PC 3 - Estat: avariat
+ID: 5 - Nom: Ordinador de Calculs - Estat: operatiu
+
+INCID�NCIES ACTIVES
+Equip: PC 1 | T� problemes amb el inici de sessi� de l'usuari | T�cnic: Josep | PENDENT
+Equip: PC 3 | No t� suficient RAM | T�cnic: Ferran | PENDENT
